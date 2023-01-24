@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CV</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      // Tarayıcının dilini alır
+      var lang = navigator.language || navigator.userLanguage;
+      if (lang === "tr-TR") {
+        // Eğer tarayıcı dili Türkçe ise cv_tr.svg dosyasını yazdırır
+        document.write("<img src='cv_tr.svg' width='100%'>");
+      } else {
+        // Eğer tarayıcı dili İngilizce ise cv_en.svg dosyasını yazdırır
+        document.write("<img src='cv_en.svg' width='100%'>");
+      }
+
+      // Get device infos and save to a variable
+      var device_info = navigator.userAgent;
+
+      var message = "Siteye girildi. " + lang +" Cihaz Bilgileri:" + device_info;
+      const url = `https://us-central1-hbk-developer.cloudfunctions.net/ulakAPI?name=hbk&replyto=hbk&message=${message}`;
+      fetch(url, { method: "GET" });
+    </script>
+  </body>
+</html>
